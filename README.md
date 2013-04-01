@@ -16,7 +16,7 @@ After you imported the script and the css style, let's make some notification:
 
 say you have a button:
 	
-	<input type='button' id='myButton' />
+	<input type='button' id='myButton' value='Click here' />
 
 and a text you wish to display as a notification:
 	
@@ -59,14 +59,14 @@ But... let's edit something. These are the available options:
 Say you want to display a succesfull notification in the center of the page, that lasts 5 seconds:
 
 #####HTML
-	<input type='button' id='myButton' />
+	<input type='button' id='myButton' value='Click here' />
 	<div id='notification' class='notify'>This is a default notification</div>
 
 #####Javascript
 	$('#myButton').click(function(){
 		$('#notification').notify({
 			'type': 'success',
-			'position': {'top': 40%, 'left':35%},
+			'position': {'top': '40%', 'left': '35%'},
 			'duration': 5000
 		});
 	});
