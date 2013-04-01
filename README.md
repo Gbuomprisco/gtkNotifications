@@ -63,12 +63,14 @@ Say you want to display a succesfull notification in the center of the page, tha
 	<div id='notification' class='notify'>This is a default notification</div>
 
 #####Javascript
-	$('#myButton').click(function(){
-		$('#notification').notify({
-			'type': 'success',
-			'position': {'top': '40%', 'left': '35%'},
-			'duration': 5000
+	$(document).ready(function(){
+		$('#myButton').click(function(){
+			$('#notification').notify({
+				'type': 'success',
+				'position': {'top': '40%', 'left': '35%'},
+				'duration': 5000
+			});
 		});
 	});
 
-*****Well done! Too simple!
+#####Well done! Too simple!
