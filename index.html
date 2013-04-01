@@ -8,9 +8,80 @@
 	<script type="text/javascript" src="js/notifications.js"></script>
 	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
 	<link rel='stylesheet' type='text/css' href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+	<style>
+	#notification{
+		background-color:#f9f9f9;
+		margin:2%;
+		padding:1%;
+		border-radius: 4px;
+		border:1px solid #ccc;
+	}
+	</style>
 </head>
 <body>
-	<input type='button' id='myButton' />
-	<div id='notification' class='notify'>This is a default notification</div>
+	<div class="navbar">
+	  <div class="navbar-inner">
+	  	<div class='container'>
+		    <a class="brand" href="#">gtkNotifications</a>
+		    <ul class="nav">
+		      <li class="active"><a href="#">Home</a></li>
+		    </ul>
+		</div>
+	  </div>
+	</div>
+	<div class='container'>
+		<div class='hero-unit'>
+			<h1>gtkNotifications</h1>
+			<p>Awesome notifications Ubuntu styled. Let's try it!</p>
+			<hr />
+			<h3>Edit the field below and launch your default notification:</h3>
+			<form class='form-horizontal'>
+				<div id='notification' class='panel' contenteditable>Edit me ..</div><div id='notification-hidden' class='notify'></div>
+			</form>
+			<div class='row'>
+				<p>Your settings:</p>
+				<form class='form-inline'>
+					<label>Type: <select id='type'>
+						<option value="default">Default</option>
+						<option value="success">Success</option>
+						<option value="error">Error</option>
+					</select></label>
+					<label>Duration:</label> <input type="text" id="duration" value='5000' style='width:10%' />
+					<label>Top:</label> <input type='text' id='top' value='5%' style='width:10%' />
+					<label>Left:</label> <input style='width:14%' type="text" id="left" value='75%' />
+					<p><input class='btn btn-primary' type="button" id="myButton" value = 'Go!' /></p>
+					<p class='alert alert-error'>Error</p>
+				</form>
+			</div>
+
+
+		</div>
+	<footer>
+		<p>Giancarlo Buomprisco - 2013</p>
+	</footer>
+	</div>
+	<script>
+
+	function getOptions(){
+		var type = $('#type').val();
+		var duration = $('#duration').val();
+		var left = $('#left').val();
+		var top = $('#top').val();
+
+		var options = {
+			'type': type,
+			'duration': parseInt(duration),
+			'position': {'left':left, 'top': top}
+		};
+
+		return options;
+	}
+		$('#myButton').click(function(){
+			var options = getOptions();
+			var text = $('#notification').text();
+			$('#notification-hidden').html(text);
+			$('#notification-hidden').notify(options);
+		});
+	</script>
 </body>
 </html>

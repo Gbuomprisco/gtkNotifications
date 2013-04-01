@@ -5,7 +5,7 @@
     var default_options = {
         'position': {'top': '5%', 'left': '75%'},
         'type': 'default',
-        'duration': 2500
+        'duration': 5000
     }
 
     element = this;
@@ -51,7 +51,7 @@
             element.animate({
                 top: "0%",
                 opacity: 0.2
-            }, { duration: 300 }
+            }, { duration: 150 }
             ).animate({
                 opacity: 0.4,
                 top: default_options['position']['top']
@@ -59,9 +59,6 @@
             ).animate({
                 opacity: 0.8
             }, { duration: 150 }
-            ).animate({
-                opacity: 1
-            }, { duration: 300 } 
             ).animate({
                 opacity: 1
             }, { duration: default_options['duration'] }
@@ -76,7 +73,7 @@
             }, { duration: 50 }
             ).animate({
                 opacity: 0,
-            }, { duration: 10, complete: function() {
+            }, { duration: 1, complete: function() {
                 element.css({'visibility':'hidden', 'top':'0%'});
             }
             });
