@@ -1,14 +1,16 @@
-=== gtkNotifications ===
+#gtkNotifications
+-----------------
 
+###What is it
 A JQuery Plugin to make awesome notifications based on Ubuntu style.
 
-== Needed files ==
+###Needed files
 	
 	css/notifications.css
 	js/notifications.js
 	js/jquery-1.9.1.js or lower
 
-== How to run it ==
+###How to run it
 
 After you imported the script and the css style, let's make some notification:
 
