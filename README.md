@@ -22,6 +22,8 @@ and a text you wish to display as a notification:
 	
 	<div id='notification' class='notify'>This is my first notification!</div>
 
+#####Notice the class of the div element: it is notify, and it should be for every notification you'll create
+
 You want to display a notification if you click it:
 
 	$('#myButton').click(function(){
@@ -32,9 +34,9 @@ Et voilà!
 
 ####Types
 You have three choices to make your style:
-*default notification, that is the default style
-*success notification, adding the class "notify-succes"
-*error notification, adding the class "notify-error"
+* default notification, that is the default style
+* success notification, adding the class "notify-succes"
+* error notification, adding the class "notify-error"
 
 There are two ways to make it working:
 #####HTML
