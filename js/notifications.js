@@ -20,8 +20,6 @@
                 null;
             } else {
                 if((options['type'] != undefined) && ($.inArray(options['type'], types) < 0)){
-                    console.log($.inArray(options['type'], types));
-                    console.log(types)
                     throw "Choice a type among 'success', 'default' or 'error', or leave blank the variable"
                 }
             }
@@ -33,7 +31,7 @@
 
             try {
                 if(options['type']){
-                    element.removeClass().addClass('notify ' + options['type']);
+                    element.removeClass().addClass('notify notify-' + options['type']);
                 }
             } catch(e){
                 null;

@@ -1,9 +1,9 @@
 .notify{
-	position: absolute;
+	position: fixed;
 	font-family: Helvetica, Arial;
 	width:20%;
 	padding: 1.5%;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 1;
 	-moz-border-radius: 7px;
 	-webkit-border-radius: 7px;
