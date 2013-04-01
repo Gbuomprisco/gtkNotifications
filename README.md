@@ -37,14 +37,15 @@ You have three choices to make your style:
 *error notification, adding the class "notify-error"
 
 There are two ways to make it working:
-* HTML
-	<div id='notification' class='notify notify-success'>Great! You won!</div>
+#####HTML
 
-* Javascript
-	$('#notification').notify({
+> <div id='notification' class='notify notify-success'>Great! You won!</div>
+
+#####Javascript
+> $('#notification').notify({
 		'type': 'success'
 	});
-	
+
 #####Remember that if you change the type as a plugin attribute, it'll has the priority on the class.
 
 ###Available options
