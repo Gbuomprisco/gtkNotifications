@@ -48,7 +48,7 @@ There are two ways to make it working:
 		'type': 'success'
 	});
 
-#####Remember that if you change the type as a plugin attribute, it'll has the priority on the class.
+#####Remember that if you change the type as a plugin attribute, it'll have the priority on the class.
 
 ###Available options
 But... let's edit something. These are the available options:

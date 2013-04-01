@@ -87,12 +87,3 @@
     return methods.init();
   };
 })( jQuery );
-$(document).ready(function(){
-	$('#myButton').click(function(){
-		$('#notification').notify({
-		    'type': 'success',
-		    'position': {'top': "40%", 'left': "35%"},
-		    'duration': 5000
-		});
-	});
-});
