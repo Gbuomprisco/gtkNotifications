@@ -8,6 +8,7 @@
 	-moz-border-radius: 7px;
 	-webkit-border-radius: 7px;
 	border-radius: 7px;
+	word-wrap: break-word;
 	opacity: 0;
 }
 

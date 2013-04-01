@@ -19,9 +19,9 @@
 	</style>
 </head>
 <body>
+	<div class='container'>
 	<div class="navbar">
 	  <div class="navbar-inner">
-	  	<div class='container'>
 		    <a class="brand" href="#">gtkNotifications</a>
 		    <ul class="nav">
 		      <li class="active"><a href="#">Home</a></li>
@@ -34,12 +34,12 @@
 			<h1>gtkNotifications</h1>
 			<p>Awesome notifications Ubuntu styled. Let's try it!</p>
 			<hr />
-			<h3>Edit the field below and launch your default notification:</h3>
+			<h3>Edit the field below and launch your notification:</h3>
 			<form class='form-horizontal'>
 				<div id='notification' class='panel' contenteditable>Edit me ..</div><div id='notification-hidden' class='notify'></div>
 			</form>
 			<div class='row'>
-				<p>Your settings:</p>
+				<h4>Your settings:</h4>
 				<form class='form-inline'>
 					<label>Type: <select id='type'>
 						<option value="default">Default</option>
@@ -49,15 +49,16 @@
 					<label>Duration:</label> <input type="text" id="duration" value='5000' style='width:10%' />
 					<label>Top:</label> <input type='text' id='top' value='5%' style='width:10%' />
 					<label>Left:</label> <input style='width:14%' type="text" id="left" value='75%' />
-					<p><input class='btn btn-primary' type="button" id="myButton" value = 'Go!' /></p>
-					<p class='alert alert-error'>Error</p>
+					<p class='container'><input class='btn btn-primary' type="button" id="myButton" value = 'Go!' /></p>
 				</form>
 			</div>
 
 
 		</div>
 	<footer>
-		<p>Giancarlo Buomprisco - 2013</p>
+		<div class="container">
+			<p><a href='http://www.giancarlobuomprisco.com'>Giancarlo Buomprisco</a> - 2013</p>
+
 	</footer>
 	</div>
 	<script>
