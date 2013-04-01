@@ -39,10 +39,10 @@ You have three choices to make your style:
 There are two ways to make it working:
 #####HTML
 
-> <div id='notification' class='notify notify-success'>Great! You won!</div>
+	<div id='notification' class='notify notify-success'>Great! You won!</div>
 
 #####Javascript
-> $('#notification').notify({
+	$('#notification').notify({
 		'type': 'success'
 	});
 
