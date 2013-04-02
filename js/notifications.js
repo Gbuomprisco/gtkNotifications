@@ -71,7 +71,7 @@
             }, { duration: 50 }
             ).animate({
                 opacity: 0,
-            }, { duration: 1, complete: function() {
+            }, { duration: 100, complete: function() {
                 element.css({'visibility':'hidden', 'top':'0%'});
             }
             });

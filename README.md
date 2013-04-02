@@ -74,3 +74,9 @@ Say you want to display a succesfull notification in the center of the page, tha
 	});
 
 #####Well done! Too simple!
+
+###Todo
+
+* Multiple notifications
+* Icons in notifications
+* Button to close a notification
