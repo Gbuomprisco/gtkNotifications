@@ -5,7 +5,7 @@
 A JQuery Plugin to make awesome notifications based on Ubuntu style.
 
 ###Needed files
-	
+
 	css/notifications.css
 	js/notifications.js
 	js/jquery-1.9.1.js or lower
@@ -15,19 +15,16 @@ A JQuery Plugin to make awesome notifications based on Ubuntu style.
 After you imported the script and the css style, let's make some notification:
 
 say you have a button:
-	
+
 	<input type='button' id='myButton' value='Click here' />
 
-and a text you wish to display as a notification:
-	
-	<div id='notification' class='notify'>This is my first notification!</div>
 
 #####Notice the class of the div element: it is "notify", and it should be for every notification you'll create
 
 You want to display a notification if you click it:
 
 	$('#myButton').click(function(){
-		$('#notification').notify();
+		$.fn.notify(options);
 	});
 
 Et voilà!
@@ -44,7 +41,7 @@ There are two ways to make it working:
 	<div id='notification' class='notify notify-success'>Great! You won!</div>
 
 #####Javascript
-	$('#notification').notify({
+	$.fn.notify({
 		'type': 'success'
 	});
 
@@ -63,20 +60,18 @@ Say you want to display a succesfull notification in the center of the page, tha
 	<div id='notification' class='notify'>This is a default notification</div>
 
 #####Javascript
+	Let's examine the available options:
+
 	$(document).ready(function(){
 		$('#myButton').click(function(){
-			$('#notification').notify({
+			$.fn.notify({
 				'type': 'success',
 				'position': {'top': '40%', 'left': '35%'},
-				'duration': 5000
+				'duration': 5000,
+				'close_button': true,
+				'text': 'This is my notification!'
 			});
 		});
 	});
 
 #####Well done! Too simple!
-
-###Todo
-
-* Multiple notifications
-* Icons in notifications
-* Button to close a notification

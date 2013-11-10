@@ -6,8 +6,8 @@
 	<link rel="stylesheet" type="text/css" href="css/notifications.css">
 	<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="js/notifications.js"></script>
-	<script src="http://twitter.github.com/bootstrap/assets/js/bootstrap.js"></script>
-	<link rel='stylesheet' type='text/css' href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css">
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
 	<style>
 	#notification{
 		background-color:#f9f9f9;
@@ -20,69 +20,82 @@
 </head>
 <body>
 	<div class='container'>
-	<div class="navbar">
-	  <div class="navbar-inner">
-		    <a class="brand" href="#">gtkNotifications</a>
-		    <ul class="nav">
-		      <li class="active"><a href="#">Home</a></li>
-		    </ul>
-		</div>
-	  </div>
-	</div>
-	<div class='container'>
-		<div class='hero-unit'>
-			<h1>gtkNotifications</h1>
-			<p>Awesome notifications Ubuntu styled. Let's try it!</p>
-			<hr />
+		<h1>gtkNotifications</h1>
+		<p>Awesome notifications Ubuntu styled. Let's try it!</p>
+		<hr />
+		<div class='jumbotron'>
 			<h3>Edit the field below and launch your notification:</h3>
-			<form class='form-horizontal'>
-				<div id='notification' class='panel' contenteditable>Edit me ..</div><div id='notification-hidden' class='notify'></div>
-			</form>
-			<div class='row'>
-				<h4>Your settings:</h4>
-				<form class='form-inline'>
-					<label>Type: <select id='type'>
+			<form class='form-horizontal' role="form">
+  				<div class="form-group">
+					<div id='notification' class='panel' contenteditable>Edit me ..</div></div>
+				</div>
+				<div class="form-group">
+					<select id='type'>
 						<option value="default">Default</option>
 						<option value="success">Success</option>
 						<option value="error">Error</option>
-					</select></label>
-					<label>Duration:</label> <input type="text" id="duration" value='5000' style='width:10%' />
-					<label>Top:</label> <input type='text' id='top' value='5%' style='width:10%' />
-					<label>Left:</label> <input style='width:14%' type="text" id="left" value='75%' />
-					<p class='container'><input class='btn btn-primary' type="button" id="myButton" value = 'Go!' /></p>
-				</form>
-			</div>
+					</select>
 
+					<input placeholder='Duration Ex. 5000' type="text" id="duration" style='width:15%' />
 
+					<input placeholder='Top Ex. 10' type='text' id='top' style='width:15%' />
+
+					<input placeholder='Left Ex. 75' style='width:15%' type="text" id="left"  />
+				</div>
+
+				<div class="form-group">
+					<input class='btn' type="button" id="myButton" value = 'Notify' />
+				</div>
+			</form>
 		</div>
-	<footer>
-		<div class="container">
-			<p><a href='http://www.giancarlobuomprisco.com'>Giancarlo Buomprisco</a> - 2013</p>
+	</div>
 
+	<footer class='container'>
+		<p>
+			<a href='http://giancarlobuomprisco.com'>Giancarlo Buomprisco</a> - 2013
+		</p>
 	</footer>
 	</div>
 	<script>
 
 	function getOptions(){
+
 		var type = $('#type').val();
 		var duration = $('#duration').val();
 		var left = $('#left').val();
 		var top = $('#top').val();
+		var position;
+
+		if(top && left){
+			position = {'left': left, 'top': top};
+		} else {
+			position = false;
+		}
 
 		var options = {
-			'type': type,
-			'duration': parseInt(duration),
-			'position': {'left':left, 'top': top}
+			'type': type || 'default',
+
+			'duration': parseInt(duration) || 5000,
 		};
+
+		if(position){
+			options.position = position;
+		}
+		options.close_button = true;
 
 		return options;
 	}
-		$('#myButton').click(function(){
-			var options = getOptions();
-			var text = $('#notification').text();
-			$('#notification-hidden').html(text);
-			$('#notification-hidden').notify(options);
-		});
+
+
+	$('#myButton').click(function(event){
+		var options = getOptions();
+		var text = $('#notification').text();
+		options.text = text;
+		$.fn.notify(options);
+		event.preventDefault();
+		event.stopPropagation();
+	});
+
 	</script>
 </body>
 </html>

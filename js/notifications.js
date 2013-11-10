@@ -1,84 +1,128 @@
-(function( $ ){
+(function($) {
+	var requestRunning = false;
 
-  $.fn.notify = function(options) {
+	$.fn.notify = function(options) {
 
-    var default_options = {
-        'position': {'top': '5%', 'left': '75%'},
-        'type': 'default',
-        'duration': 5000
-    }
+		var default_options = {
+			'position': {
+				'top': '5%',
+				'left': '75%'
+			},
+			'type': 'default',
+			'duration': 5000,
+			'text': '',
+			'close_button': false
+		};
 
-    element = this;
+		var settings = $.extend(default_options, options);
 
-    var types = ['error', 'default', 'success'];
-    
+		if (!requestRunning) {
+			requestRunning = true;
 
-    var methods = {
-        
-        getType: function(){
-            if(options === undefined){
-                null;
-            } else {
-                if((options['type'] != undefined) && ($.inArray(options['type'], types) < 0)){
-                    throw "Choice a type among 'success', 'default' or 'error', or leave blank the variable"
-                }
-            }
-        },
+			var element = $('<div>');
+			$('body').append(element);
 
-        init : function() {
+			var types = ['error', 'default', 'success'];
 
-            this.getType();
+			var methods = {
 
-            try {
-                if(options['type']){
-                    element.removeClass().addClass('notify notify-' + options['type']);
-                }
-            } catch(e){
-                null;
-            }
+				getType: function() {
+					if (options !== undefined) {
+						if ((options.type !== undefined) && ($.inArray(options.type, types) < 0)) {
+							throw "Choice a type among 'success', 'default' or 'error', or leave blank the variable";
+						}
+					}
+				},
 
-            var settings = $.extend(default_options, options);
+				closeButton: function() {
+					if (settings.close_button) {
+						element.append('<span class="close-button">x</span>');
+						$('.close-button').click(function() {
+							element.fadeOut().remove();
+							requestRunning = false;
+						});
+					} else {
+						return false;
+					}
+				},
 
-            element.addClass('notify-' + default_options['type']);
+				init: function() {
 
-            element.css({
-                'left': default_options['position']['left']
-            });
+					try {
+						if (options.type) {
+							element.removeClass().addClass('notify notify-' + options.type);
+						} else {
+							element.addClass('notify-' + default_options.type);
+						}
 
-            element.css('visibility', 'visible');
-            element.animate({
-                top: "0%",
-                opacity: 0.2
-            }, { duration: 150 }
-            ).animate({
-                opacity: 0.4,
-                top: default_options['position']['top']
-            }, { duration: 150 }
-            ).animate({
-                opacity: 0.8
-            }, { duration: 150 }
-            ).animate({
-                opacity: 1
-            }, { duration: default_options['duration'] }
-            ).animate({
-                opacity: 0.8
-            }, { duration: 150 }
-            ).animate({
-                opacity: 0.4
-            }, { duration: 100 }
-            ).animate({
-                opacity: 0.2
-            }, { duration: 50 }
-            ).animate({
-                opacity: 0,
-            }, { duration: 100, complete: function() {
-                element.css({'visibility':'hidden', 'top':'0%'});
-            }
-            });
- 
-         }
-    }
+						if (options['text']) {
+							element.html(options.text);
+						}
 
-    return methods.init();
-  };
-})( jQuery );
+					} catch (e) {
+						return null;
+					}
+
+
+					element.css({
+						'left': settings.position.left + '%',
+						'display': 'block'
+					});
+
+					this.getType();
+					this.closeButton();
+
+					element.animate({
+						top: "0%",
+						opacity: 0.13
+					}, {
+						duration: 150
+					}).animate({
+						opacity: 0.88,
+						top: parseInt(settings.position.top) + 2 + "%",
+					}, {
+						duration: 150
+					}).animate({
+						top: parseInt(settings.position.top) - 3 + "%",
+					}, {
+						duration: 650
+					}).animate({
+						opacity: 1,
+						top: parseInt(settings.position.top) + 1 + "%",
+					}, {
+						duration: 550
+					}).animate({
+						opacity: 1,
+					}, {
+						duration: settings.duration
+					}).animate({
+						opacity: 0.99
+					}, {
+						duration: 150
+					}).animate({
+						opacity: 0.66
+					}, {
+						duration: 100
+					}).animate({
+						opacity: 0.33
+					}, {
+						duration: 50
+					}).animate({
+						opacity: 0,
+					}, {
+						duration: 100,
+						complete: function() {
+							element.css({
+								'display': 'none',
+								'top': '0%'
+							}).remove();
+							requestRunning = false;
+						}
+					});
+				}
+			};
+
+			methods.init();
+		}
+	};
+})(jQuery);
