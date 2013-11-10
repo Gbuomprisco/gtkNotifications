@@ -65,11 +65,12 @@ Say you want to display a succesfull notification in the center of the page, tha
 	$(document).ready(function(){
 		$('#myButton').click(function(){
 			$.fn.notify({
-				'type': 'success',
-				'position': {'top': '40%', 'left': '35%'},
-				'duration': 5000,
-				'close_button': true,
-				'text': 'This is my notification!'
+				'type': 'success',								// class applied
+				'position': {'top': '40%', 'left': '35%'},		// position
+				'duration': 5000,								// duration of notification
+				'close_button': true,							// display button to close the notification
+				'text': 'This is my notification!',				// text displayed in the notification
+				'animate': false								// if false, the notification does not animate
 			});
 		});
 	});

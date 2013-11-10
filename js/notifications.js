@@ -11,6 +11,7 @@
 			'type': 'default',
 			'duration': 5000,
 			'text': '',
+			'animate': true,
 			'close_button': false
 		};
 
@@ -72,56 +73,70 @@
 					this.getType();
 					this.closeButton();
 
-					element.animate({
-						top: "0%",
-						opacity: 0.13
-					}, {
-						duration: 150
-					}).animate({
-						opacity: 0.88,
-						top: parseInt(settings.position.top) + 2 + "%",
-					}, {
-						duration: 150
-					}).animate({
-						top: parseInt(settings.position.top) - 3 + "%",
-					}, {
-						duration: 650
-					}).animate({
-						opacity: 1,
-						top: parseInt(settings.position.top) + 1 + "%",
-					}, {
-						duration: 550
-					}).animate({
-						opacity: 1,
-					}, {
-						duration: settings.duration
-					}).animate({
-						opacity: 0.99
-					}, {
-						duration: 150
-					}).animate({
-						opacity: 0.66
-					}, {
-						duration: 100
-					}).animate({
-						opacity: 0.33
-					}, {
-						duration: 50
-					}).animate({
-						opacity: 0,
-					}, {
-						duration: 100,
-						complete: function() {
-							element.css({
-								'display': 'none',
-								'top': '0%'
-							}).remove();
+					if (settings.animate) {
+
+						element.animate({
+							top: "0%",
+							opacity: 0.13
+						}, {
+							duration: 150
+						}).animate({
+							opacity: 0.88,
+							top: parseInt(settings.position.top) + 2 + "%",
+						}, {
+							duration: 150
+						}).animate({
+							top: parseInt(settings.position.top) - 3 + "%",
+						}, {
+							duration: 650
+						}).animate({
+							opacity: 1,
+							top: parseInt(settings.position.top) + 1 + "%",
+						}, {
+							duration: 550
+						}).animate({
+							opacity: 1,
+						}, {
+							duration: settings.duration
+						}).animate({
+							opacity: 0.99
+						}, {
+							duration: 150
+						}).animate({
+							opacity: 0.66
+						}, {
+							duration: 100
+						}).animate({
+							opacity: 0.33
+						}, {
+							duration: 50
+						}).animate({
+							opacity: 0,
+						}, {
+							duration: 100,
+							complete: function() {
+								element.css({
+									'display': 'none',
+									'top': '0%'
+								}).remove();
+								requestRunning = false;
+							}
+						});
+					} else {
+
+						element.css({
+							'opacity': 1,
+							'top': settings.position.top
+						});
+
+						setTimeout(function() {
+							element.remove();
 							requestRunning = false;
-						}
-					});
+						}, settings.duration);
+
+					}
 				}
 			};
-
 			methods.init();
 		}
 	};
